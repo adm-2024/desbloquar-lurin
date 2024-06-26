@@ -1,6 +1,4 @@
 
- 
-import  sql  from "mssql";
 import { getConnection } from "../models/connection.js";
 
 export const getBloqueados = async (req, res) => {
@@ -26,12 +24,12 @@ export const getBloqueados = async (req, res) => {
 
   export const desbloquearUsuario = async (req, res) => {
     let { codpersona } = req.body;
-    console.log(codpersona)
+    
     if (!codpersona) {
         return res.status(400).json({ error: 'El parámetro codpersona es requerido' });
     }
     codpersona = padWithZeros(codpersona)
-    console.log(codpersona)
+    
     try {
         const pool = await getConnection();
         const result = await pool
